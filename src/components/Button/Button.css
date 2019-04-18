@@ -1,0 +1,20 @@
+.add-button {
+  margin-right: 5px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+
+  background-color: #1d7074;
+  box-shadow: 0 1px 0 0 #003134;
+
+  cursor: pointer;
+}
+
+.button {
+  display: flex;
+  flex-grow: 1;
+  padding: 10px 15px;
+
+  border: none;
+  border-radius: 3px;
+}

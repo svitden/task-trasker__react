@@ -1,0 +1,38 @@
+.page-header {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 20px;
+
+  background-color: #1d7074;
+}
+
+.page-header__logo {
+  margin-left: 25px;
+  color: #fff;  
+}
+
+.page__nav {
+  margin-left: 50px;
+}
+
+.nav__list {
+  display: flex;
+
+  margin: 0;  
+  padding: 0;
+  list-style: none;
+}
+
+.nav__item {
+  margin-right: 25px;
+}
+
+.nav__link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  color: #5dc8cd;
+}

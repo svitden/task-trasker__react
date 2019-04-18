@@ -1,0 +1,28 @@
+.boards__item {
+  box-sizing: border-box;
+  margin: 0 0 10px 1.33%;
+  width: 32%;
+  min-width: 170px;
+  min-height: 102px;
+  
+  cursor: pointer;
+}
+
+.board__tile-add {  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+
+  height: 100%;
+  color: #00474b;
+  font-weight: bold;
+
+  background-color:#d6dbdb;
+}
+
+.board__tile-add:hover {
+  background-color: #c3c7c7;
+}
+
+

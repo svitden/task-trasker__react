@@ -1,0 +1,37 @@
+.boards {
+  margin-bottom: 10px;
+  height: 100%;
+}
+
+.boards__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin: 0;
+  padding: 0;
+  margin-left: -1.33%;
+  list-style: none;
+}
+
+.board__detail {  
+  height: 100%;
+  border-radius: 3px;
+
+  background-color: #01939a;
+}
+
+.board__detail:hover {
+  background-color: #1d7074;
+}
+
+.board__detail-title {
+  margin: 0;
+  padding: 0;
+  padding: 10px 5px 5px 10px;
+
+  font-size: 16px;
+  color: #fff;
+  overflow: hidden;
+}
+

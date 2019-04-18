@@ -1,0 +1,27 @@
+.lists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin: 0;
+  padding: 0;
+  margin-left: -1.33%;
+  list-style: none;
+}
+
+.list__wrapper {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin: 0 0 10px 1.33%;
+  width: 32%;
+  height: 100%; 
+}
+
+.list__content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color:#d6dbdb;  
+}

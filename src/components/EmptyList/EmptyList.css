@@ -1,0 +1,7 @@
+.tile-input {
+  display: flex;
+  flex-direction: column;
+
+  background-color:#d6dbdb;
+  border-radius: 3px;
+}
