@@ -4,6 +4,8 @@ import './EmptyBoard.css';
 
 import Input from './../Input';
 import Controls from './../Controls';
+import { connect } from 'react-redux';
+import { setBoard } from './../../store/actions';
 
 
 class EmptyBoard extends Component {
@@ -31,6 +33,13 @@ class EmptyBoard extends Component {
       }
     });
   }
+
+  createBoard = (boardName) => {
+    return {
+      boardName,
+      boardId: new Date().getTime()      
+    }
+  }
  
   onSubmit = (evt) => {
     evt.preventDefault();
@@ -39,15 +48,16 @@ class EmptyBoard extends Component {
     });
     
     this.setState((state, props) => {
-      props.getBoardName(state.boardName);
+      const newBoard = this.createBoard(state.boardName);
+
+      props.setBoard(newBoard);
       return {
         boardClicked: false
       }
     });
   }
 
-  getValue = (text) => {
-    
+  getValue = (text) => {    
     this.setState({
       name: text
     });
@@ -57,7 +67,7 @@ class EmptyBoard extends Component {
         
     return (
       <React.Fragment>
-        <li
+        <div
           className="boards__item"
           onClick={this.onBoardClick}
         >
@@ -82,10 +92,15 @@ class EmptyBoard extends Component {
               </div>
             </form>
           }
-        </li>
+        </div>
       </React.Fragment>
     );
   }
 }
 
-export default EmptyBoard;
+
+const mapDispatchToProps = {
+  setBoard
+}
+
+export default connect(null, mapDispatchToProps)(EmptyBoard);

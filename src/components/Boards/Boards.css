@@ -1,9 +1,4 @@
 .boards {
-  margin-bottom: 10px;
-  height: 100%;
-}
-
-.boards__list {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -14,8 +9,33 @@
   list-style: none;
 }
 
-.board__detail {  
+.board__wrapper {
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  margin: 0 0 10px 1.33%;
+  width: 32%;
   height: 100%;
+}
+
+.board__content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color:#d6dbdb;
+}
+
+.board__detail { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin: 0;
+  padding: 0;
+  margin-left: -1.33%;
+  list-style: none;
+  min-height: 102px;
   border-radius: 3px;
 
   background-color: #01939a;
@@ -28,9 +48,10 @@
 .board__detail-title {
   margin: 0;
   padding: 0;
-  padding: 10px 5px 5px 10px;
+  padding: 10px 5px 5px 15px;
 
   font-size: 16px;
+  text-transform: uppercase;
   color: #fff;
   overflow: hidden;
 }

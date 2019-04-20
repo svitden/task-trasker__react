@@ -64,8 +64,7 @@ class AddTask extends Component {
 	}
 
 	render() {
-		console.log('AddTask props', this.props)
-		
+			
 		return (
 			<React.Fragment>
 				{

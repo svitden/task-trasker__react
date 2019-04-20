@@ -1,11 +1,12 @@
 .boards__item {
-  box-sizing: border-box;
-  margin: 0 0 10px 1.33%;
-  width: 32%;
-  min-width: 170px;
-  min-height: 102px;
+  box-sizing: border-box;  
+  min-height: 102px;  
   
   cursor: pointer;
+}
+
+.boards__item:hover {
+  background-color: #c3c7c7;
 }
 
 .board__tile-add {  
@@ -16,13 +17,8 @@
 
   height: 100%;
   color: #00474b;
-  font-weight: bold;
-
-  background-color:#d6dbdb;
+  font-weight: bold;  
 }
 
-.board__tile-add:hover {
-  background-color: #c3c7c7;
-}
 
 

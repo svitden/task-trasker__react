@@ -1,33 +1,16 @@
 const initialState = {
-	boardNames: [],	
+	loading: true,
+	boards: [],
 	lists: [
-		{
-			listName: 'TEST NAME 199',
-			listId: 199,
-			tasks: [
-				{ taskId: 300, taskName: '300 Go' },
-				{ taskId: 301, taskName: '301 Let' },
-				{ taskId: 302, taskName: '302 Last' }
-			]
-		},
-		{
-			listName: 'TEST NAME 200',
-			listId: 200,
-			tasks: [
-				{ taskId: 400, taskName: '400 Here' },
-				{ taskId: 401, taskName: '401 I' },
-				{ taskId: 402, taskName: '402 am' }
-			]
-		}
-	]	
+
+	]
 }
 
 const reducer = (state = initialState, action) => {
 	console.log('Actions in reducer', action);
-	switch (action.type) {		
+	switch (action.type) {
 		case 'SET_TASK':
 			{
-				console.log(action.payload);
 				const { task, listId } = action.payload;
 				const lists = state.lists;
 				const requedList = lists.find((item) => item.listId === listId);
@@ -46,18 +29,40 @@ const reducer = (state = initialState, action) => {
 					...lists.slice(inxOfRequedList + 1)
 				];
 
+				localStorage.setItem(
+					"lists",
+					JSON.stringify(newListArray)
+				);
+
 				return {
 					...state,
 					lists: newListArray
 				};
-			}			
+			}
 			
 		case 'SET_LIST':
+			{
+				const newListArray = [...state.lists, action.payload];
+
+				localStorage.setItem(
+					"lists",
+					JSON.stringify(newListArray)
+				);
+
+				return {
+					...state,
+					lists: [...state.lists, action.payload]
+				};
+			}
+
+		case 'SET_LISTS':
 			return {
-				...state, 
-				lists: [...state.lists, action.payload]
-			};
-		case 'DELETE_TASK':			
+				...state,
+				lists: action.payload,
+				loading: false
+			};		
+
+		case 'DELETE_TASK':
 			const { taskId, listId } = action.payload;
 			const lists = state.lists;
 			const requedList = lists.find((item) => item.listId === listId);
@@ -76,12 +81,52 @@ const reducer = (state = initialState, action) => {
 				requedList,
 				...lists.slice(inxOfRequedList + 1)
 			];
+
+			localStorage.setItem(
+				"lists",
+				JSON.stringify(newListArray)
+			);
 			
 			return {
 				...state,
 				lists: newListArray
 			};
 
+		case 'DELETE_LIST':
+			{
+				const { listId } = action.payload;
+				const lists = state.lists;
+				const inxOfRequedList = lists.findIndex((item) => item.listId === listId);
+				const newListArray = [
+					...lists.slice(0, inxOfRequedList),
+					...lists.slice(inxOfRequedList + 1)
+				];
+
+				localStorage.setItem(
+					"lists",
+					JSON.stringify(newListArray)
+				);
+
+				return {
+					...state,
+					lists: newListArray
+				};
+		}
+
+		case 'SET_BOARD':
+			{
+				const newBoards = [...state.boards, action.payload]
+				localStorage.setItem(
+					"boards",
+					JSON.stringify(newBoards)
+				);
+
+				return {
+					...state,
+					boards: newBoards
+				};
+			}
+				
 		default:
 			return state;
 	}

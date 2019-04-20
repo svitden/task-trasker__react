@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import EmptyBoard from './../EmptyBoard';
 
-import './Boards.css'
+import './Boards.css';
+import { connect } from 'react-redux';
+
 
 class Boards extends Component {
 
@@ -9,45 +11,45 @@ class Boards extends Component {
     boardNames: []
   }
 
-  getBoardName = (text) => {
-    const { boardNames } = this.state;
-    boardNames.push(text);
-    this.setState(() => {
-      return {
-        boardNames: boardNames
-      }
-    });
-  }
-
   renderItems (arr) {
-    const array = arr.reverse();
-    return array.map((boardName) => {
+    console.log("ARR" , arr)
+    return arr.map((item) => {
       return (
-        <li className="boards__item" key={boardName}>
-          <div className="board__detail">
-            <h3 className="board__detail-title">
-              {boardName}
-            </h3>
-          </div>
-        </li>
+        <div className="board__wrapper" key={item.boardId}>
+          <div className="board__content">
+            <div className="board__detail">
+              <h3 className="board__detail-title">
+                {item.boardName}
+              </h3>
+            </div>
+          </div>          
+        </div>
       )
     });
   }
 
   render() {
-    const { boardNames } = this.state;  
     
-    const items = this.renderItems(boardNames);
+    const { boards } = this.props;
 
+    const boardContext = this.renderItems(boards);
+    
     return (
       <section className="boards">
-        <ul className="boards__list">
-          {items}          
-          <EmptyBoard getBoardName={this.getBoardName}/>
-        </ul>
+        {boardContext}
+        <div className="board__wrapper">
+          <div className="board__content">
+            <EmptyBoard />
+          </div>
+        </div>        
       </section>
     );
   }
 }
 
-export default Boards;
+const mapStateToProps = state => ({
+  boards: state.boards,
+  loading: state.loading
+});
+
+export default connect(mapStateToProps)(Boards);

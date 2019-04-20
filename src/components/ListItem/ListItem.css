@@ -4,3 +4,7 @@
 
 	font-size: 16px;
 }
+
+.task_close-btn {
+	visibility: hidden; 
+}

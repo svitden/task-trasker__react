@@ -4,7 +4,8 @@
 <Main />
 	<Switch>
     <Route exact path='/' component={HomePage} />
-
+			<Boards />
+				<EmptyBoard />
     <Route path='/lists' component={ListsPage} />
 			<Lists />
 				<LoadLists />
