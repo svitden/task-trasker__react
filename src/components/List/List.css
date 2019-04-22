@@ -3,7 +3,7 @@
 	align-items: center;
 	justify-content: space-between;
 
-	margin: 5px 10px 0 10px;
+	margin: 10px 10px 0 10px;
 }
 
 .list__name {
@@ -21,10 +21,10 @@
 .task__item {
 	display: flex;
 	justify-content: space-between;
-	align-items: center;	
+	align-items: flex-start;	
 	flex-grow: 1;
 	margin: 10px 5px 5px 5px;
-  padding: 10px 10px 10px 15px;
+  padding: 12px 10px 10px 15px;
 
   border: none;
   border-radius: 3px;

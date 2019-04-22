@@ -3,31 +3,29 @@ import './ListsPage.css';
 import EmptyList from './../EmptyList';
 import LoadLists from '../LoadLists';
 import { connect } from 'react-redux';
-import { setLists } from './../../store/actions';
+import { getListsFromStorage, setLoading } from './../../store/actions';
 import Spinner from '../Spinner';
 
 
 
 class ListsPage extends Component {
 
-	componentDidMount(){		
-		let listsFromLocalStorage = JSON.parse( localStorage.getItem("lists") );
-		
-		listsFromLocalStorage ? this.props.setLists(listsFromLocalStorage) : this.props.setLists(this.props.lists);
+	componentDidMount(){
+		this.props.setLoading('true');
+		this.props.getListsFromStorage();
 	}
 
 	render() {
 
-		const { lists, loading, boardId } = this.props;
+		const { lists, loading, boardId } = this.props;		
 		
-
-		const listContext = lists ? <LoadLists boardId={boardId}/>	: null;
 		if (loading) {
 			console.log('СПИННЕР БЫЛ')
 			return (
 				< Spinner />
 			);
 		}
+		const listContext = lists ? <LoadLists boardId={boardId} /> : null;
 		
 		return (
 			<section className="lists">
@@ -48,7 +46,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-	setLists	
+	getListsFromStorage,
+	setLoading
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListsPage);

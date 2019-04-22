@@ -13,8 +13,7 @@ const Main = () => {
         <Route exact path='/boards/' component={BoardsDeletePage}/>
         <Route exact 
           path='/:id' 
-          render={({match}) => {
-            console.log('MATCH', match);
+          render={({match}) => {           
             const { id } = match.params;
             return <ListsPage boardId={id} /> 
           }}

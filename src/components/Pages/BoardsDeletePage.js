@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './BoardsDeletePage.css';
 import { connect } from 'react-redux';
-import { setBoards, removeBoard } from './../../store/actions';
+import { setBoards, removeBoard } from '../../store/actions';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

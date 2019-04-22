@@ -3,25 +3,25 @@ import EmptyBoard from './../EmptyBoard';
 
 import './Boards.css';
 import { connect } from 'react-redux';
-import { setBoards } from './../../store/actions';
+import { getBoardsFromStorage, setLoading } from './../../store/actions';
 import { withRouter } from 'react-router-dom';
+import Spinner from '../Spinner';
 
 
 class Boards extends Component {
 
-  componentDidMount() {
-    let boardsFromLocalStorage = JSON.parse(localStorage.getItem("boards"));    
-    boardsFromLocalStorage ? this.props.setBoards(boardsFromLocalStorage) : this.props.setBoards(this.props.boards);
+  componentDidMount() { 
+    this.props.setLoading('true');
+    this.props.getBoardsFromStorage();
   }
-  
+
   renderItems(arr, history) {
-    
+
     return arr.map((item) => {
       return (
         <div className="board__wrapper" 
           key={item.boardId}
-          onClick={() => {
-            console.log('Click on board', item.boardId);            
+          onClick={() => {            
             history.push(`${item.boardId}`);
           }}
         >
@@ -38,8 +38,15 @@ class Boards extends Component {
   }
 
   render() {
-    
-    const { boards, history } = this.props;
+
+    const { boards, history, loading } = this.props;
+
+    if (loading) {
+      console.log('СПИННЕР БЫЛ')
+      return (
+        < Spinner />
+      );
+    }
     
     const boardContext = this.renderItems(boards, history);
     
@@ -50,7 +57,7 @@ class Boards extends Component {
           <div className="board__content">
             <EmptyBoard />
           </div>
-        </div>        
+        </div>
       </section>
     );
   }
@@ -62,7 +69,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  setBoards
+  getBoardsFromStorage,
+  setLoading
 }
 
 export default withRouter( connect(mapStateToProps, mapDispatchToProps)(Boards) );
