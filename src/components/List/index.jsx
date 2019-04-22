@@ -25,7 +25,7 @@ class List extends Component {
 							className="icon"
 							onClick={() => onListDeleted(list.listId)}
 						>
-							<FontAwesomeIcon icon="times" />
+						<FontAwesomeIcon icon="times" />
 						</div>
 					</div>
 				}

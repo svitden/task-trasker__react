@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Boards from '../Boards';
 
-class HomePage extends Component {
+class BoardPage extends Component {
 	render() {
 		return (
 			<React.Fragment>
@@ -11,4 +11,4 @@ class HomePage extends Component {
 	}
 };
 
-export default HomePage;
+export default BoardPage;

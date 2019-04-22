@@ -35,8 +35,9 @@ class EmptyList extends Component {
 
   createList = (listName) => {
     return {
+      boardId: this.props.boardId,
       listName,
-      listId: new Date().getTime(),
+      listId: String( new Date().getTime() ),
       tasks:[]
     }
   }

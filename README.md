@@ -19,3 +19,46 @@
 				<AddBlock />
 				<Input />
 				<Controls />
+
+
+
+
+// import {Formik, Field} from '';
+
+// const Input = ({field}) => {
+//   <input type="text" {...field}/>
+// }
+
+
+// class LocalForm extends Component {
+//   render () {
+//     return (
+//       <form onSubmit={this.handSubmit}>
+//         <Field name="surname" component={Input} />
+//         <button type="submit">Submit</button>
+//       </form>
+//     );
+//   }
+// }
+
+
+// class ConnetWithForm extends Component {
+//   handleSubmit = value => {   
+//     console.log('value');
+//   }
+
+//   renderContent = ({ handleSubmit}) => {
+//       <LocalForm onSubmit={handleSubmit} />
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         <Formik 
+//           onSubmit={this.handSubmit}
+//           render={this.renderContent}
+//         />
+//       </div>
+//     );
+//   }
+// }

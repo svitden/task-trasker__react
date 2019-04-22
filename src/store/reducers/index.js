@@ -1,10 +1,8 @@
-const initialState = {
+const initialState = {	
 	loading: true,
 	boards: [],
-	lists: [
-
-	]
-}
+	lists: []
+};
 
 const reducer = (state = initialState, action) => {
 	console.log('Actions in reducer', action);
@@ -113,9 +111,18 @@ const reducer = (state = initialState, action) => {
 				};
 		}
 
+		case 'SET_BOARDS':
+			{
+				return {
+					...state,
+					boards: action.payload
+				};
+			}
+
 		case 'SET_BOARD':
 			{
-				const newBoards = [...state.boards, action.payload]
+				const newBoards = [...state.boards, action.payload];
+
 				localStorage.setItem(
 					"boards",
 					JSON.stringify(newBoards)
@@ -126,7 +133,15 @@ const reducer = (state = initialState, action) => {
 					boards: newBoards
 				};
 			}
-				
+		
+		case 'DELETE_BOARD':
+			const { filteredBoards, filteredLists } = action.payload;
+			return {
+				...state,
+				lists: filteredLists,
+				boards: filteredBoards
+			};
+
 		default:
 			return state;
 	}

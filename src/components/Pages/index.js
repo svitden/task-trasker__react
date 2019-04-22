@@ -1,7 +1,9 @@
-import HomePage from './HomePage';
+import BoardPage from './BoardPage';
 import ListsPage from './ListsPage';
+import BoardsDeletePage from './BoardsDeletePage';
 
 export {
-	HomePage,
-	ListsPage
+	BoardPage,
+	ListsPage,
+	BoardsDeletePage
 };

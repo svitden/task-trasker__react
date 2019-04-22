@@ -10,16 +10,18 @@ import Spinner from '../Spinner';
 
 class ListsPage extends Component {
 
-	 componentDidMount(){		
-			let listsFromLocalStorage = JSON.parse( localStorage.getItem("lists") );
-			console.log('from Local Storage', listsFromLocalStorage, this.props);
-		 listsFromLocalStorage = listsFromLocalStorage ? this.props.setLists(listsFromLocalStorage) : this.props.setLists(this.props.lists);
-	 }
+	componentDidMount(){		
+		let listsFromLocalStorage = JSON.parse( localStorage.getItem("lists") );
+		
+		listsFromLocalStorage ? this.props.setLists(listsFromLocalStorage) : this.props.setLists(this.props.lists);
+	}
 
 	render() {
 
-		const { lists, loading } = this.props;
-		const listContext = lists ? <LoadLists />	: null;
+		const { lists, loading, boardId } = this.props;
+		
+
+		const listContext = lists ? <LoadLists boardId={boardId}/>	: null;
 		if (loading) {
 			console.log('СПИННЕР БЫЛ')
 			return (
@@ -32,7 +34,7 @@ class ListsPage extends Component {
 				{listContext}
 				<div className="list__wrapper">
 					<div className="list__content">
-						<EmptyList />
+						<EmptyList boardId={boardId}/>
 					</div>
 				</div>
 			</section>

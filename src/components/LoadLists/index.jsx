@@ -16,16 +16,20 @@ class LoadLists extends Component {
 	}
 
 	render () {
-		const { lists } =this.props;
+		const { lists, boardId } =this.props;
+
+		const newLists = lists.filter((item) => { 			
+			return item.boardId === boardId ;
+		});		
 
 		return (
 			<React.Fragment>
 				{
-					lists.map((list) => {
+					newLists.map((list) => {
 						return (
 							<div className="list__wrapper" key={list.listId}>
 								<div className="list__content">
-									<List list={list}
+									<List list={list}							
 										onTaskDeleted={this.onDeleteTask}
 										onListDeleted={this.onDeletedList}
 										/>

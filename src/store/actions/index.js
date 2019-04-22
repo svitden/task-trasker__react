@@ -23,10 +23,35 @@ const setLists = newLists => ({
 	payload: newLists,
 });
 
+const setBoards = newBoard => ({
+	type: 'SET_BOARDS',
+	payload: newBoard,
+});
+
 const setBoard = newBoard => ({
 	type: 'SET_BOARD',
 	payload: newBoard,
 });
+
+const deleteBoard = (filteredBoards, filteredLists) => ({
+	type: 'DELETE_BOARD',
+	payload: { filteredBoards, filteredLists },
+});
+
+const removeBoard = boardId => dispatch => {
+
+	const lists = JSON.parse(localStorage.getItem('lists'));
+	const filteredLists = lists.filter(item => item.boardId !== boardId);
+	console.log('filteredLists', filteredLists);
+	localStorage.setItem('lists', JSON.stringify(filteredLists));
+
+	const boards = JSON.parse(localStorage.getItem('boards'));
+	const filteredBoards = boards.filter(item => item.boardId !== boardId);
+	localStorage.setItem('boards', JSON.stringify(filteredBoards));
+
+	dispatch( deleteBoard(filteredBoards, filteredLists) );
+};
+
 
 
 export {
@@ -35,5 +60,7 @@ export {
 	setTask,
 	deleteTask,
 	deleteList,
-	setBoard
+	setBoards,
+	setBoard,
+	removeBoard
 };

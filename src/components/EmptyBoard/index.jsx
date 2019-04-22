@@ -37,7 +37,7 @@ class EmptyBoard extends Component {
   createBoard = (boardName) => {
     return {
       boardName,
-      boardId: new Date().getTime()      
+      boardId: String( new Date().getTime() )    
     }
   }
  

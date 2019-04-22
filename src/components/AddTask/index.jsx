@@ -37,7 +37,7 @@ class AddTask extends Component {
 
 	createTask = (taskName) => {
 		return {
-			taskId: new Date().getTime(),
+			taskId: String( new Date().getTime() ),
 			taskName
 		}
 	}

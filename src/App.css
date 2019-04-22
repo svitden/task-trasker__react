@@ -50,11 +50,3 @@ body {
 .icon:hover {
   color: #01939a;
 }
-
-.hide {
-  display: none;
-}
-
-.show {
-  display: block;
-}
