@@ -44,6 +44,8 @@ class EmptyList extends Component {
 
   onSubmit = (evt) => {
     evt.preventDefault();
+    if (!this.state.name.trim()) return;
+
     this.setState({
       listName: this.state.name
     });

@@ -43,6 +43,7 @@ class EmptyBoard extends Component {
  
   onSubmit = (evt) => {
     evt.preventDefault();
+    if (!this.state.name.trim()) return;
     this.setState({
       boardName: this.state.name
     });
